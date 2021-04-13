@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test Report Template</title>
+<script type="text/javascript" src="../reportData.js"></script>
+<script ype="text/javascript" src="reportUtil/Chart.min.js"></script>
+<script type="text/javascript" src="reportUtil/Chart.PieceLabel.js"></script>
+<script type="text/javascript" src="reportUtil/report.js"></script>
+<style>
+	body {background-color: lightgrey;}tfoot tr td,th{background-color:#0096c7}table{border-collapse:collapse;border-spacing:0;width:100%;border:1px solid #ddd}td,th{font-family:Verdana;border:1px solid #000;text-align:left;padding:3px;font-size:small}tfoot tr td,th{text-align:center}tfoot tr td{padding:5px}.SUCCESS{background-color:#06d6a0}.FAILED{background-color:#e76f51}.SKIPPED{background-color:#ffd166}.class,.result{word-break:break-all}#ApplicationDetails{width:100%;text-align:center;font-weight:700}div.relative{position:relative;height:200px;overflow-y:scroll;overflow-x:scroll}div.absolute{position:absolute;width:2000px;height:100%;border:3px solid #73AD21}@media only screen and (max-width:1150px){.table{table-layout:fixed;width:1150px}.rep_sho{width:1150px;overflow-x:scroll}#MainTable th,td{overflow:hidden}}.search{position:absolute;top:2px;right:2px;z-index:initial}input[type=text]{width:100px;box-sizing:border-box;border:2px solid #ccc;border-radius:4px;font-size:16px;background-color:#fff;padding:4px 10px;-webkit-transition:width .4s ease-in-out;transition:width .5s ease-in-out}input[type=text]:focus{width:250px;border:2px solid #504f52}.pagination{display:inline-block}.pagination a{color:#000;float:left;padding:4px 8px;text-decoration:none;font-weight:700}.pagination a.active{background-color:#4CAF50;color:#fff;border-radius:5px}.pagination a:hover:not(.active){background-color:#ddd;border-radius:5px}a{position:relative}img{display:none;width:400px;height:200px;background:gray;position:absolute;top:20px;left:0}a:hover img{display:block}.font15{font-size:12px;font-family:Verdana;color:#444}.middle_text{text-align:center;vertical-align:middle}.collapsible{cursor:pointer;width:100%;text-align:center;outline:none;font-size:12px;color:rgb(60, 60, 243)}.content{display:none;overflow:hidden}.boldText{font-weight:700}.headerHeight{height:45px}.collapsableTable2{display:""}.hide{display:none}.show{display:""}.image{z-index: 100}
+</style>
+</head>
+<body onload="StatusTable()">
+	<div class="rep_sho">
+		<table id='main_table'>
+			<tr>
+				<td colspan="4" style="padding: 0px;">
+					<div id="ApplicationDetails"></div>
+				</td>
+			</tr>
+			<tr>
+				<td width="24%">
+					<div
+						style="position: relative; top: 0; left: 30%; font-weight: bold;">Test Run Overview</div>
+					<div id="canvas-holder" onload="status()">
+						<canvas id="test-status" height="220"></canvas>
+					</div>
+				</td>
+				<td width="25%">
+					<div
+						style="position: relative; top: 0; left: 30%; font-weight: bold;">Type
+						of Exceptions </div>
+					<div id="canvas-holder" onload="status()">
+						<canvas id="fail-result" height="220" ></canvas>
+					</div>
+				</td>
+				<td>
+					<div id="canHolder" style="width: 100%">
+						<canvas id="myChart"> </canvas>
+					</div>
+					<div style="text-align: center">
+						<button id="back" type="button" onclick="pagination('')" disabled>&laquo;</button>
+						<input type="button" id="size" disabled></input>
+						<button id="front" type="button" onclick="pagination('next')">&raquo;</button>
+					</div>
+				</td>
+				<td width="250" style="font-weight: bolder;">
+					<div id="status" style="width: 200px; margin: auto;">
+						<table id="TimeTable" style="border: none; margin-bottom: 20px">
+							<tr>
+								<th colspan="2">Total Run Time</th>
+							</tr>
+							<tr>
+								<td colspan="2"
+									style="text-align: center; background-color: #a8dadc">hh:mm:ss<br>
+									<span id="time" style="font-size: 20px; font-weight: bold;"></span></td>
+							</tr>
+						</table>
+						<table id="statusTable" style="border: none;">
+							<tr>
+								<th colspan="2">Test Sumary</th>
+							</tr>
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="rep_sho" style="position: relative;">
+		<table id="MainTable" class="sortable" width="1200">
+			<thead id="header" style="position: static;">
+				<tr height="40px">
+					<th width="50px">Test #</th>
+					<th width="250px">Method</th>
+					<th width="220px">Test Params</th>
+					<th width="320px">Test Description</th>
+					<th width="85px">Time (s)</th>
+					<th width="75px">Result</th>
+					<th id="exp">Exception</th>
+				</tr>
+			</thead>
+			<tfoot>
+				<tr>
+					<td colspan="7"><div id="footer"></div></td>
+				</tr>
+			</tfoot>
+			<tbody id="BodyRows">
+				
+			</tbody>
+		</table>
+		</div>
+		<script type="text/javascript">
+		document.getElementById('main_table').style.backgroundColor = 'lightgrey';
+		document.getElementById('ApplicationDetails').style.backgroundColor = '#0096c7';
+		document.getElementById('ApplicationDetails').innerHTML = testRunName;
+		document.getElementById('ApplicationDetails').style.fontSize = '50px';
+		document.getElementById('ApplicationDetails').style.color = 'black';
+		document.getElementById('footer').style.backgroundColor = '';
+		document.getElementById('footer').innerHTML = footerText;
+		document.getElementById('footer').style.fontSize = '20px';
+		document.getElementById('footer').style.color = 'black';
+		</script>
+</body>
+</html>
