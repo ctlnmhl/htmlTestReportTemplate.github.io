@@ -72,7 +72,7 @@ function addTableRowsFromJSON() {
             classNameSplit = data[value].className.split(".").slice(-1)[0];
 
             tHeader.setAttribute("colspan", "7");
-            tHeader.style = "cursor: pointer;"
+            tHeader.style = "cursor: context-menu;"
             tHeader.className = checkClassStatus(data[value].className);
             tHeader.className += " middle_text boldText headerHeight collapse2";
             tHeader.id = data[value].className;
@@ -345,12 +345,8 @@ function expandableResults() {
         coll[i].addEventListener("click", function() {
             var collapsibleTableElements = document.getElementsByClassName(this.id.split(".").slice(-1)[0]);
             for(i = 0; i < collapsibleTableElements.length; i++){
-                if (!collapsibleTableElements[i].classList.contains("hide")) {
-                    collapsibleTableElements[i].classList.toggle("hide");
-                } else {
                     collapsibleTableElements[i].classList.toggle("hide");
                 }
-            }
         })
     }
 } 
