@@ -252,9 +252,16 @@ function parseMillisecondsIntoReadableTime(e) {
 }
 
 function failedData(data) {
-    data.indexOf("Unable to find element") > -1 || data.indexOf("Cannot locate element") > -1 ? xpathError += 1 :
-     (data.indexOf("expected [") > -1 && data.indexOf("but found [")) || (data.indexOf("expected") > -1 && data.indexOf("to")) > -1 ? assertError += 1 : 
-     data.indexOf("Error forwarding the new session") || data.indexOf("Request timed out waiting for a node") || data.indexOf("Error communicating with the remote browser") > -1 ? webdriverError += 1 : otherError += 1
+    console.log(data)
+    if (data.indexOf("Unable to find element") > -1 || data.indexOf("Cannot locate element") > -1) {
+        xpathError += 1 
+    } else if (data.indexOf("expected [") > -1 && data.indexOf("but found [") > -1 || data.indexOf("expected") > -1 && data.indexOf("to") > -1) {
+        assertError += 1
+    } else if (data.indexOf("Error forwarding the new session") > -1 || data.indexOf("Request timed out waiting for a node") > -1 || data.indexOf("Error communicating with the remote browser") > -1) {
+        webdriverError += 1
+    } else {
+        otherError += 1
+    }
 }
 
 function lineGraph(e, t) {
