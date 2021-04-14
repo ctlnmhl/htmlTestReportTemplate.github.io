@@ -2,7 +2,7 @@
 
 Here's a preview example for a set of generated test data: https://ctlnmhl.github.io/htmlTestReportTemplate.github.io/reportTemplate/report.html
 
-The template reads a .js file containing test data vars:
+The template reads a `reportData.js` file containing test data vars:
 
 ```
 var data = [{
